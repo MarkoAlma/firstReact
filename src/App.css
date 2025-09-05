@@ -15,3 +15,6 @@
   flex-direction: column;
 }
 
+.tunik {
+  display: none;
+}
