@@ -5,10 +5,11 @@ import { Button } from "reactstrap";
 import { Counter } from "./components/counter";
 import { Toggle } from "./components/Toggle";
 import { Todo } from "./components/Todo";
+import { Gallery } from "./components/Gallery";
 
 function App() {
 
-  const [selected, setSelected] =useState(null)
+  const [selected, setSelected] = useState(null)
 
   return (
     <>
@@ -22,10 +23,17 @@ function App() {
           <Button onClick={()=>setSelected('Todo')} color="success" outline={selected!='Todo'}>
             Todo
           </Button>{" "}
+          <Button onClick={()=>setSelected('Gallery')} color="primary" outline={selected!='Gallery'}>
+            Gallery
+          </Button>{" "}
         </div>
         {selected == 'Counter' && <Counter/>}
         {selected == 'Toggle' && <Toggle/>}
         {selected == 'Todo' && <Todo/>}
+        {selected == 'Gallery' && <Gallery/>}
+
+
+        
         
       </div>
     </>
