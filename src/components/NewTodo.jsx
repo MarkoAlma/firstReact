@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
+
 import { Button, Col, Form, FormGroup, Input, Label } from 'reactstrap'
 
-const NewTodo = () => {
+const NewTodo = ({handleAdd}) => {
 
     const [desc, setDesc] = useState("")
 
     console.log(desc);
     
     const handleSubmit = ()=> {
-
+        handleAdd(desc)
+        setDesc("")
     }
 
     return (
@@ -23,7 +25,8 @@ const NewTodo = () => {
                             value={desc}
                             onChange={(e)=>setDesc(e.target.value)}
                         />
-                        <Button onClick={()=>handleSubmit()}>Add</Button>
+                        <Button onClick={()=>handleSubmit()} disabled={!desc}>Add</Button>
+                        
                 </FormGroup>
             </Form>
         </div>

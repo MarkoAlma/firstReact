@@ -5,6 +5,7 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import NewTodo from "./NewTodo";
+import TodoSummary from "./TodoSummary";
 
 export const Todo = () => {
   const [todo, setTodo] = useState(todosData);
@@ -18,10 +19,25 @@ export const Todo = () => {
     setTodo(prev=>prev.map((obj) => obj.id != id ? obj : {...obj,done:!obj.done}))
   }
 
+  const allClear = ()=> {
+    setTodo(prev => prev.filter(obj  => obj.id != obj.id))
+  }
+
+  const handleAdd = (desc) => {
+    const uj = {id:Date.now(), desc, done:false}
+    setTodo(prev=>[...prev,uj])
+  }
+
+  const handleSummary = () => {
+    const alma = todo.filter((obj)=>obj.done==true)
+    return [todo.length, alma.length]
+  }
+
   return (
     <>
+    <span style={{fontSize:'xx-large'}} onClick={()=>allClear()}><FaRegTrashAlt /></span>
       <div style={{width:'100%'}}>
-        <NewTodo/>
+        <NewTodo handleAdd={handleAdd}/>
         <ListGroup>
           {todo.map((obj) => (
             <ListGroupItem key={obj.id}>
@@ -35,7 +51,10 @@ export const Todo = () => {
             </ListGroupItem>
           ))}
         </ListGroup>
+        <TodoSummary handleSummary={handleSummary}/>
       </div>
     </>
   );
+
+
 };

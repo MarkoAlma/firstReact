@@ -6,6 +6,8 @@ import { Counter } from "./components/counter";
 import { Toggle } from "./components/Toggle";
 import { Todo } from "./components/Todo";
 import { Gallery } from "./components/Gallery";
+import Frameworks from "./components/Frameworks";
+import RandomQuote from "./components/RandomQuote";
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
         {selected == 'Toggle' && <Toggle/>}
         {selected == 'Todo' && <Todo/>}
         {selected == 'Gallery' && <Gallery/>}
+        {!selected && <Frameworks/>}
+        {!selected && <RandomQuote/>}
 
 
         

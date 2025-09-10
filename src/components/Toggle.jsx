@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'reactstrap'
+import Dice from './Dice'
 
 export const Toggle = () => {
 
@@ -9,12 +10,17 @@ export const Toggle = () => {
   }
 
   return (
+    <>
     <div>
       <div onClick={()=>fut()}><Button outline>Are you happy?</Button></div>
       <div style={{textAlign:'center', fontSize:'x-large'}}>
         <div className='happy'>😊</div>
         <div className='sad tunik'>😔</div>
       </div>
+
+    
     </div>
+    <Dice/>
+    </>
   )
 }
